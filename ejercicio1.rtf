@@ -1,0 +1,15 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf400
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\csgray\c0;\csgray\c100000;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \cb3 \CocoaLigature0 create database s17ex2\
+create table Conductor(run int primary key, nombre varchar(30) not null);\
+create table Camiones(ID serial primary key, modelo varchar(30) not null, conductor_id int not null references Conductor(run));\
+create table Envios(ID serial primary key, producto varchar(30) not null, id_conductor int not null references Conductor(run));\
+create table Ciudad(ID serial primary key, nombre_ciudad varchar(30) not null);\
+create table Comuna(ID serial primary key,nombre_com varchar(30) not null, id_ciudad int not null references ciudad(ID));\
+create table Cliente(run int primary key, nombre varchar(30) not null, id_comuna int not null references comuna(ID));\
+create table Paquetes(ID serial primary key, nom_paq varchar(30) not null, id_envios int not null references Envios(ID), id_cliente int not null references Cliente(run));}
